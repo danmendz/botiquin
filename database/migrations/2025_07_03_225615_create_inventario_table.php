@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('inventario', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('botiquin_id')->constrained('botiquines')->onDelete('cascade');
-            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
+            $table->foreignId('botiquin_id')->nullable()->constrained('botiquines')->nullOnDelete();
+            $table->foreignId('producto_id')->nullable()->constrained('productos')->nullOnDelete();
             $table->integer('cantidad');
             $table->date('fecha_caducidad');
             $table->date('fecha_registro');

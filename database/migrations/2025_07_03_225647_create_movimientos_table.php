@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('movimientos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inventario_id')->constrained('inventario')->onDelete('cascade');
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('inventario_id')->nullable()->constrained('inventario')->nullOnDelete();
+            $table->foreignId('usuario_id')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('tipo', ['entrada', 'salida']);
             $table->integer('cantidad');
             $table->timestamp('fecha_movimiento')->useCurrent();

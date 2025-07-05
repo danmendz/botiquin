@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tipo_paciente')->nullable()->constrained('tipo_pacientes')->nullOnDelete();
             $table->string('nombre', 100);
-            $table->foreignId('tipo_paciente')->constrained('tipo_pacientes')->onDelete('cascade');
             $table->date('fecha_nacimiento')->nullable();
-            $table->enum('genero', ['masculino', 'femenino', 'otro'])->nullable();
+            $table->enum('genero', ['masculino', 'femenino', 'otro']);
             $table->timestamps();
         });
     }

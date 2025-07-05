@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('usuario_id')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('tipo_reporte', ['uso', 'caducidad', 'inventario']);
             $table->timestamp('fecha_generacion')->useCurrent();
             $table->text('descripcion')->nullable();
+            $table->timestamps();
         });
     }
 
