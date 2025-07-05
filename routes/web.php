@@ -26,13 +26,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('tipo-pacientes', TipoPacienteController::class);
-Route::resource('users', UserController::class);
-Route::resource('botiquines', BotiquineController::class);
-Route::resource('productos', ProductoController::class);
-Route::resource('pacientes', PacienteController::class);
-Route::resource('detalles-academicos', DetallesAcademicoController::class);
-Route::resource('inventarios', InventarioController::class);
-Route::resource('movimientos', MovimientoController::class);
-Route::resource('reportes', ReporteController::class);
-Route::resource('expedientes-medicos', ExpedientesMedicoController::class);
+Route::resource('tipo-pacientes', TipoPacienteController::class)->names('tipo-pacientes');
+Route::resource('users', UserController::class)->names('users');
+Route::resource('botiquines', BotiquineController::class)->names('botiquines');
+Route::resource('productos', ProductoController::class)->names('productos');
+Route::resource('pacientes', PacienteController::class)->names('pacientes');
+Route::resource('detalles-academicos', DetallesAcademicoController::class)->names('detalles-academicos');
+Route::resource('inventarios', InventarioController::class)->names('inventarios');
+Route::resource('movimientos', MovimientoController::class)->names('movimientos');
+Route::resource('reportes', ReporteController::class)->names('reportes');
+Route::resource('expedientes-medicos', ExpedientesMedicoController::class)->names('expedientes-medicos');
