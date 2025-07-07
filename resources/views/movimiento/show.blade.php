@@ -26,12 +26,17 @@
                                     <dl class="divide-y divide-gray-100">
                                         
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Inventario Id</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $movimiento->inventario_id }}</dd>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Inventario </dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+    {{ $movimiento->inventario 
+        ? ($movimiento->inventario->producto->nombre ?? 'Sin producto') . ' (Botiquín - ' . ($movimiento->inventario->botiquine->nombre ?? 'sin botiquín') . ')' 
+        : 'Sin inventario' 
+    }}
+</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Usuario Id</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $movimiento->usuario_id }}</dd>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $movimiento->user->name ?? 'Sin usuario' }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Tipo</dt>
@@ -43,7 +48,9 @@
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Fecha Movimiento</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $movimiento->fecha_movimiento }}</dd>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                         {{ \Carbon\Carbon::parse($movimiento->fecha_movimiento)->format('d/m/Y') }}
+                                    </dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Observaciones</dt>

@@ -22,7 +22,9 @@ class PacienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'nombre' => 'required|string',
+            'tipo_paciente' => 'required|exists:tipo_pacientes,id',
+            'fecha_nacimiento' => 'nullable|date',
+            'nombre' => 'required|string',
 			'genero' => 'required',
         ];
     }

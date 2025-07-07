@@ -20,11 +20,14 @@ class InventarioRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-			'cantidad' => 'required',
-			'fecha_caducidad' => 'required',
-			'fecha_registro' => 'required',
-        ];
-    }
+{
+    return [
+        'botiquin_id' => 'required|exists:botiquines,id',
+        'producto_id' => 'required|exists:productos,id',
+        'cantidad' => 'required|numeric|min:1',
+        'fecha_caducidad' => 'required|date',
+        'fecha_registro' => 'required|date',
+    ];
+}
+
 }

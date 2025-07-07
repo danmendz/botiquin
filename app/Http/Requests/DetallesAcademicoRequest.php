@@ -20,13 +20,15 @@ class DetallesAcademicoRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-			'tipo_academico' => 'required',
-			'matricula' => 'string',
-			'carrera' => 'required|string',
-			'grupo' => 'string',
-			'semestre' => 'string',
-        ];
-    }
+{
+    return [
+        'paciente_id' => ['required', 'exists:pacientes,id'],
+        'tipo_academico' => ['required', 'in:Estudiante,Docente'],
+        'matricula' => ['required', 'regex:/^[0-9]+$/', 'min:6', 'max:15'],
+        'carrera' => ['required', 'string', 'max:100'],
+        'grupo' => ['required', 'regex:/^[A-Za-z]+$/'],
+        'semestre' => ['required', 'integer', 'min:1', 'max:12'],
+    ];
+}
+
 }

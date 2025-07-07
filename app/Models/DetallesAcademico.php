@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// app/Models/DetallesAcademico.php
 
 /**
  * Class DetallesAcademico
@@ -24,22 +26,32 @@ use Illuminate\Database\Eloquent\Model;
 class DetallesAcademico extends Model
 {
     
-    protected $perPage = 20;
+    use HasFactory;
+
+    protected $table = 'detalles_academicos'; // o el nombre correcto de tu tabla
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['paciente_id', 'tipo_academico', 'matricula', 'carrera', 'grupo', 'semestre'];
+    protected $fillable = [
+        'paciente_id',
+        'tipo_academico',
+        'matricula',
+        'carrera',
+        'grupo',
+        'semestre',
+    ];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function paciente()
-    {
-        return $this->belongsTo(\App\Models\Paciente::class, 'paciente_id', 'id');
-    }
+{
+    return $this->belongsTo(Paciente::class, 'paciente_id');
+}
     
 }

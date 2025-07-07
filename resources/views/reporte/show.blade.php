@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $reporte->name ?? __('Show') . " " . __('Reporte') }}
+            {{ $reporte->name ?? __('Visualizar') . " " . __('Reporte') }}
         </h2>
     </x-slot>
 
@@ -11,11 +11,11 @@
                 <div class="w-full">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Show') }} Reporte</h1>
-                            <p class="mt-2 text-sm text-gray-700">Details of {{ __('Reporte') }}.</p>
+                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Visualizar') }} Reporte</h1>
+                            <p class="mt-2 text-sm text-gray-700">Detalles de {{ __('Reporte') }}.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('reportes.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
+                            <a type="button" href="{{ route('reportes.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Regresar</a>
                         </div>
                     </div>
 
@@ -26,19 +26,20 @@
                                     <dl class="divide-y divide-gray-100">
                                         
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Usuario Id</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $reporte->usuario_id }}</dd>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Usuario</dt>
+                                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                            {{ $reporte->usuario?->name ?? 'Sin nombre' }} </dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Tipo Reporte</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $reporte->tipo_reporte }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Fecha Generacion</dt>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Fecha de Generación</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $reporte->fecha_generacion }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Descripcion</dt>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Descripción</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $reporte->descripcion }}</dd>
                                 </div>
 

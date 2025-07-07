@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InventarioRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Botiquine;
+use App\Models\Producto;
+
 
 class InventarioController extends Controller
 {
@@ -15,23 +18,26 @@ class InventarioController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request): View
-    {
-        $inventarios = Inventario::paginate();
+{
+    $inventarios = Inventario::with(['botiquine', 'producto'])->paginate();
 
-        return view('inventario.index', compact('inventarios'))
-            ->with('i', ($request->input('page', 1) - 1) * $inventarios->perPage());
-    }
+    return view('inventario.index', compact('inventarios'))
+        ->with('i', ($request->input('page', 1) - 1) * $inventarios->perPage());
+}
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(): View
-    {
-        $inventario = new Inventario();
+{
+    $botiquines = Botiquine::all();
+    $productos = Producto::all();
+    $inventario = new Inventario();
 
-        return view('inventario.create', compact('inventario'));
-    }
-
+    return view('inventario.create', compact('inventario', 'botiquines', 'productos'));
+}
+    
     /**
      * Store a newly created resource in storage.
      */

@@ -26,19 +26,19 @@
                                     <dl class="divide-y divide-gray-100">
                                         
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Paciente Id</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->paciente_id }}</dd>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Paciente</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->paciente?->nombre ?? 'Sin nombre' }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Usuario Id</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->usuario_id }}</dd>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Responsable</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->user?->name ?? 'Sin usuario' }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Fecha Evento</dt>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Fecha de Evento</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->fecha_evento }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Descripcion</dt>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Descripción</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $expedientesMedico->descripcion }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

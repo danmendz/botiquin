@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inventario;
+use App\Models\User;
+use Iluminate\Database\Eloquent\Factories\HasFactory;
+use Iluminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Movimiento
@@ -39,9 +43,10 @@ class Movimiento extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function inventario()
-    {
-        return $this->belongsTo(\App\Models\Inventario::class, 'inventario_id', 'id');
-    }
+{
+    return $this->belongsTo(\App\Models\Inventario::class, 'inventario_id', 'id');
+}
+
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

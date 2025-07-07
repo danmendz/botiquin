@@ -31,17 +31,21 @@ class Paciente extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['tipo_paciente', 'nombre', 'fecha_nacimiento', 'genero'];
+   protected $fillable = ['nombre', 'tipo_paciente', 'fecha_nacimiento', 'genero'];
+
+
+    public function tipoPaciente()
+{
+    return $this->belongsTo(TipoPaciente::class, 'tipo_paciente');
+}
+
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tipoPaciente()
-    {
-        return $this->belongsTo(\App\Models\TipoPaciente::class, 'tipo_paciente', 'id');
-    }
     
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -54,8 +58,9 @@ class Paciente extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function expedientesMedicos()
-    {
-        return $this->hasMany(\App\Models\ExpedientesMedico::class, 'id', 'paciente_id');
-    }
+{
+    return $this->hasMany(\App\Models\ExpedientesMedico::class, 'paciente_id', 'id');
+}
+
     
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 /**
  * Class Reporte
@@ -15,7 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property User $user
+
+ * @property User $usuario
+ 
+
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -35,9 +39,12 @@ class Reporte extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class, 'usuario_id', 'id');
-    }
-    
+    public function usuario()
+{
+    return $this->belongsTo(User::class, 'usuario_id');
+}
+
+
+
+
 }

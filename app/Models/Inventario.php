@@ -39,9 +39,11 @@ class Inventario extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function botiquine()
-    {
-        return $this->belongsTo(\App\Models\Botiquine::class, 'botiquin_id', 'id');
-    }
+{
+    return $this->belongsTo(\App\Models\Botiquine::class, 'botiquin_id', 'id');
+}
+
+
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

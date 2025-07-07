@@ -6,7 +6,7 @@
         <x-input-error class="mt-2" :messages="$errors->get('nombre')"/>
     </div>
     <div>
-        <x-input-label for="descripcion" :value="__('Descripcion')"/>
+        <x-input-label for="descripcion" :value="__('Descripción')"/>
         <x-text-input id="descripcion" name="descripcion" type="text" class="mt-1 block w-full" :value="old('descripcion', $producto?->descripcion)" autocomplete="descripcion" placeholder="Descripcion"/>
         <x-input-error class="mt-2" :messages="$errors->get('descripcion')"/>
     </div>
@@ -17,6 +17,6 @@
     </div>
 
     <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+        <x-primary-button>Guardar</x-primary-button>
     </div>
 </div>

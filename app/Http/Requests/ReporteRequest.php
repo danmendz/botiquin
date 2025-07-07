@@ -20,11 +20,12 @@ class ReporteRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-			'tipo_reporte' => 'required',
-			'fecha_generacion' => 'required',
-			'descripcion' => 'string',
-        ];
-    }
+{
+    return [
+        'usuario_id' => 'required|exists:users,id',
+        'tipo_reporte' => 'required',
+        'fecha_generacion' => 'required|date',
+        'descripcion' => 'nullable|string',
+    ];
+}
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Paciente;
 
 use App\Models\ExpedientesMedico;
 use Illuminate\Http\RedirectResponse;
@@ -26,18 +27,22 @@ class ExpedientesMedicoController extends Controller
      * Show the form for creating a new resource.
      */
     public function create(): View
-    {
-        $expedientesMedico = new ExpedientesMedico();
+{
+    $expedientesMedico = new ExpedientesMedico();
+    $pacientes = Paciente::with('tipoPaciente')->get();
 
-        return view('expedientes-medico.create', compact('expedientesMedico'));
-    }
+    return view('expedientes-medico.create', compact('expedientesMedico', 'pacientes'));
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(ExpedientesMedicoRequest $request): RedirectResponse
     {
+        // dd($request->all());  <-- elimina o comenta esta línea
+        
         ExpedientesMedico::create($request->validated());
+
 
         return Redirect::route('expedientes-medicos.index')
             ->with('success', 'ExpedientesMedico created successfully.');
@@ -57,11 +62,12 @@ class ExpedientesMedicoController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id): View
-    {
-        $expedientesMedico = ExpedientesMedico::find($id);
+{
+    $expedientesMedico = ExpedientesMedico::find($id);
+    $pacientes = Paciente::with('tipoPaciente')->get();
 
-        return view('expedientes-medico.edit', compact('expedientesMedico'));
-    }
+    return view('expedientes-medico.edit', compact('expedientesMedico', 'pacientes'));
+}
 
     /**
      * Update the specified resource in storage.

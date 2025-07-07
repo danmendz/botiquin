@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,12 +37,19 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(UserRequest $request): RedirectResponse
-    {
-        User::create($request->validated());
+{
+    $data = $request->validated();
 
-        return Redirect::route('users.index')
-            ->with('success', 'User created successfully.');
+    // Encriptar el password antes de crear el usuario
+    if (isset($data['password'])) {
+        $data['password'] = Hash::make($data['password']);
     }
+
+    User::create($data);
+
+    return Redirect::route('users.index')
+        ->with('success', 'User created successfully.');
+}
 
     /**
      * Display the specified resource.
@@ -66,13 +74,25 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user): RedirectResponse
-    {
-        $user->update($request->validated());
 
-        return Redirect::route('users.index')
-            ->with('success', 'User updated successfully');
-    }
+    public function update(UserRequest $request, User $user): RedirectResponse
+{
+    $data = $request->validated();
+
+    // Si no envían password, lo quitamos para que no actualice
+    if (empty($data['password'])) {
+    unset($data['password']);
+} else {
+    $data['password'] = bcrypt($data['password']);
+}
+
+
+    $user->update($data);
+
+    return Redirect::route('users.index')
+        ->with('success', 'User updated successfully');
+}
+
 
     public function destroy($id): RedirectResponse
     {

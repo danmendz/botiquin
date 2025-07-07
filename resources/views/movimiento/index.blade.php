@@ -12,10 +12,10 @@
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Movimientos') }}</h1>
-                            <p class="mt-2 text-sm text-gray-700">A list of all the {{ __('Movimientos') }}.</p>
+                            <p class="mt-2 text-sm text-gray-700">Una lista de todos los {{ __('Movimientos') }}.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('movimientos.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
+                            <a type="button" href="{{ route('movimientos.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Agregar</a>
                         </div>
                     </div>
 
@@ -27,11 +27,11 @@
                                     <tr>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">No</th>
                                         
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Inventario Id</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Usuario Id</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Inventario</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Usuario</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Tipo</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Cantidad</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Fecha Movimiento</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Fecha de Movimiento</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Observaciones</th>
 
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
@@ -42,20 +42,29 @@
                                         <tr class="even:bg-gray-50">
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">{{ ++$i }}</td>
                                             
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->inventario_id }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->usuario_id }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+    {{ $movimiento->inventario 
+        ? ($movimiento->inventario->producto->nombre ?? 'Sin producto') . ' (Botiquín - ' . ($movimiento->inventario->botiquine->nombre ?? 'sin botiquín') . ')' 
+        : 'Sin inventario' 
+    }}
+</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->user->name ?? 'Sin usuario' }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->tipo }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->cantidad }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->fecha_movimiento }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+    {{ \Carbon\Carbon::parse($movimiento->fecha_movimiento)->format('d/m/Y') }}
+</td>
+
+
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $movimiento->observaciones }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
                                                 <form action="{{ route('movimientos.destroy', $movimiento->id) }}" method="POST">
-                                                    <a href="{{ route('movimientos.show', $movimiento->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
-                                                    <a href="{{ route('movimientos.edit', $movimiento->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
+                                                    <a href="{{ route('movimientos.show', $movimiento->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Visualizar') }}</a>
+                                                    <a href="{{ route('movimientos.edit', $movimiento->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('movimientos.destroy', $movimiento->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
+                                                    <a href="{{ route('movimientos.destroy', $movimiento->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('¿Estás seguro de eliminar?') ? this.closest('form').submit() : false;">{{ __('Eliminar') }}</a>
                                                 </form>
                                             </td>
                                         </tr>

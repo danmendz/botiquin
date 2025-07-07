@@ -20,12 +20,14 @@ class MovimientoRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-			'tipo' => 'required',
-			'cantidad' => 'required',
-			'fecha_movimiento' => 'required',
-			'observaciones' => 'string',
-        ];
-    }
+{
+    return [
+        'inventario_id' => 'required|exists:inventarios,id',
+        'usuario_id' => 'required|exists:users,id',
+        'tipo' => 'required',
+        'cantidad' => 'required|numeric',
+        'fecha_movimiento' => 'required|date',
+        'observaciones' => 'nullable|string',
+    ];
+}
 }
