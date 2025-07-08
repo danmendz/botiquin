@@ -5,23 +5,47 @@
             <!-- Left side: Logo + Links -->
             <div class="flex items-center space-x-8">
                 <!-- Logo -->
-                <a href="{{ route('dashboard') }}" class="flex items-center">
+                <a href="{{ route('home') }}" class="flex items-center">
                     <x-application-mark class="block h-9 w-auto" />
                 </a>
 
                 <!-- Navigation Links -->
                 <div class="hidden sm:flex space-x-4">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Dashboard</x-nav-link>
-                    <x-nav-link href="{{ route('tipo-pacientes.index') }}" :active="request()->routeIs('tipo-pacientes.*')">Tipo Pacientes</x-nav-link>
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">Usuarios</x-nav-link>
-                    <x-nav-link href="{{ route('botiquines.index') }}" :active="request()->routeIs('botiquines.*')">Botiquines</x-nav-link>
-                    <x-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.*')">Productos</x-nav-link>
-                    <x-nav-link href="{{ route('pacientes.index') }}" :active="request()->routeIs('pacientes.*')">Pacientes</x-nav-link>
-                    <x-nav-link href="{{ route('detalles-academicos.index') }}" :active="request()->routeIs('detalles-academicos.*')">Detalles Académicos</x-nav-link>
-                    <x-nav-link href="{{ route('inventarios.index') }}" :active="request()->routeIs('inventarios.*')">Inventarios</x-nav-link>
-                    <x-nav-link href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos.*')">Movimientos</x-nav-link>
-                    <x-nav-link href="{{ route('reportes.index') }}" :active="request()->routeIs('reportes.*')">Reportes</x-nav-link>
-                    <x-nav-link href="{{ route('expedientes-medicos.index') }}" :active="request()->routeIs('expedientes-medicos.*')">Expedientes Médicos</x-nav-link>
+
+                    @if (request()->routeIs('tipo-pacientes.*'))
+                        <x-nav-link href="{{ route('tipo-pacientes.index') }}" :active="request()->routeIs('tipo-pacientes.*')">Tipo pacientes</x-nav-link> 
+                    @endif
+
+                    @if (request()->routeIs('botiquines.*'))
+                        <x-nav-link href="{{ route('botiquines.index') }}" :active="request()->routeIs('botiquines.*')">Botiquines</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('productos.*'))
+                        <x-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.*')">Productos</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('pacientes.*'))
+                        <x-nav-link href="{{ route('pacientes.index') }}" :active="request()->routeIs('pacientes.*')">Pacientes</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('inventarios.*'))
+                        <x-nav-link href="{{ route('inventarios.index') }}" :active="request()->routeIs('inventarios.*')">Inventarios</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('movimientos.*'))
+                        <x-nav-link href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos.*')">Movimientos</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('reportes.*'))
+                        <x-nav-link href="{{ route('reportes.index') }}" :active="request()->routeIs('reportes.*')">Reportes</x-nav-link>
+                    @endif
+
+                    @if (request()->routeIs('expedientes-medicos.*'))
+                        <x-nav-link href="{{ route('expedientes-medicos.index') }}" :active="request()->routeIs('expedientes-medicos.*')">Expedientes Médicos</x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
@@ -107,7 +131,32 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Dashboard</x-responsive-nav-link>
-            <!-- Agrega aquí los demás enlaces si deseas que aparezcan también en móvil -->
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">Usuarios</x-responsive-nav-link>
+            
+            @if (request()->routeIs('tipo-pacientes.*'))
+                <x-responsive-nav-link href="{{ route('tipo-pacientes.index') }}" :active="request()->routeIs('tipo-pacientes.*')">Tipo pacientes</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('botiquines.*'))
+                <x-responsive-nav-link href="{{ route('botiquines.index') }}" :active="request()->routeIs('botiquines.*')">Botiquines</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('productos.*'))
+                <x-responsive-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.*')">Productos</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('pacientes.*'))
+                <x-responsive-nav-link href="{{ route('pacientes.index') }}" :active="request()->routeIs('pacientes.*')">Pacientes</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('inventarios.*'))
+                <x-responsive-nav-link href="{{ route('inventarios.index') }}" :active="request()->routeIs('inventarios.*')">Inventarios</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('movimientos.*'))
+                <x-responsive-nav-link href="{{ route('movimientos.index') }}" :active="request()->routeIs('movimientos.*')">Movimientos</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('reportes.*'))
+                <x-responsive-nav-link href="{{ route('reportes.index') }}" :active="request()->routeIs('reportes.*')">Reportes</x-responsive-nav-link>
+            @endif
+            @if (request()->routeIs('expedientes-medicos.*'))
+                <x-responsive-nav-link href="{{ route('expedientes-medicos.index') }}" :active="request()->routeIs('expedientes-medicos.*')">Expedientes Médicos</x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings -->

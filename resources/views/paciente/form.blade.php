@@ -42,6 +42,38 @@
         <x-input-error class="mt-2" :messages="$errors->get('genero')" />
     </div>
 
+    {{-- Matrícula --}}
+    <div>
+        <x-input-label for="matricula" :value="__('Matrícula')" />
+        <x-text-input id="matricula" name="matricula" type="text" class="mt-1 block w-full"
+                      :value="old('matricula', $paciente?->matricula)" placeholder="Ej. 2023123456" />
+        <x-input-error class="mt-2" :messages="$errors->get('matricula')" />
+    </div>
+
+    {{-- Carrera --}}
+    <div>
+        <x-input-label for="carrera" :value="__('Carrera')" />
+        <x-text-input id="carrera" name="carrera" type="text" class="mt-1 block w-full"
+                      :value="old('carrera', $paciente?->carrera)" placeholder="Nombre de la carrera" />
+        <x-input-error class="mt-2" :messages="$errors->get('carrera')" />
+    </div>
+
+    {{-- Grupo --}}
+    <div>
+        <x-input-label for="grupo" :value="__('Grupo')" />
+        <x-text-input id="grupo" name="grupo" type="text" class="mt-1 block w-full"
+              :value="old('grupo', $paciente?->grupo)" placeholder="Ej. A, B, C" />
+        <x-input-error class="mt-2" :messages="$errors->get('grupo')" />
+    </div>
+
+    {{-- Semestre --}}
+    <div>
+        <x-input-label for="semestre" :value="__('Semestre')" />
+        <x-text-input id="semestre" name="semestre" type="text" class="mt-1 block w-full"
+                    :value="old('semestre', $paciente?->semestre)" placeholder="Ej. 1, 2, 3..." />
+        <x-input-error class="mt-2" :messages="$errors->get('semestre')" />
+    </div>
+
     <!-- Botón -->
     <div class="flex items-center gap-4">
         <x-primary-button>Guardar</x-primary-button>

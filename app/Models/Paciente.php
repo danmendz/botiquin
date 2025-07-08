@@ -12,6 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $nombre
  * @property $fecha_nacimiento
  * @property $genero
+ * @property $matricula
+ * @property $carrera
+ * @property $grupo
+ * @property $semestre
  * @property $created_at
  * @property $updated_at
  *
@@ -31,36 +35,29 @@ class Paciente extends Model
      *
      * @var array<int, string>
      */
-   protected $fillable = ['nombre', 'tipo_paciente', 'fecha_nacimiento', 'genero'];
+   protected $fillable = [
+        'nombre', 
+        'tipo_paciente', 
+        'fecha_nacimiento', 
+        'genero',
+        'matricula',
+        'carrera',
+        'grupo',
+        'semestre',
+    ];
 
 
     public function tipoPaciente()
 {
     return $this->belongsTo(TipoPaciente::class, 'tipo_paciente');
 }
-
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function detallesAcademicos()
-    {
-        return $this->hasMany(\App\Models\DetallesAcademico::class, 'id', 'paciente_id');
-    }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function expedientesMedicos()
-{
-    return $this->hasMany(\App\Models\ExpedientesMedico::class, 'paciente_id', 'id');
-}
+    {
+        return $this->hasMany(\App\Models\ExpedientesMedico::class, 'paciente_id', 'id');
+    }
 
-    
 }

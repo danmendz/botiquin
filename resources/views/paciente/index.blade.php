@@ -31,6 +31,10 @@
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Nombre</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Fecha Nacimiento</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Genero</th>
+                                    <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Matricula</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Carrera</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Grupo</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Semestre</th>
 
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
                                     </tr>
@@ -45,6 +49,10 @@
         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
         {{ \Carbon\Carbon::parse($paciente->fecha_nacimiento)->format('d/m/Y')  }}
         </td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $detallesAcademico->matricula }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $detallesAcademico->carrera }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $detallesAcademico->grupo }}</td>
+        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $detallesAcademico->semestre }}</td>
 
         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $paciente->genero }}</td>
 

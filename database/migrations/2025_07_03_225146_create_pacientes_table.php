@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->date('fecha_nacimiento')->nullable();
             $table->enum('genero', ['masculino', 'femenino', 'otro']);
+            $table->string('matricula', 20)->unique()->nullable();
+            $table->string('carrera', 100)->nullable();
+            $table->string('grupo', 20)->nullable();
+            $table->string('semestre', 20)->nullable();
             $table->timestamps();
         });
     }

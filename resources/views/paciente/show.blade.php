@@ -41,6 +41,22 @@
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Género</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $paciente->genero }}</dd>
                                 </div>
+                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Matricula</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $paciente->matricula }}</dd>
+                                </div>
+                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Carrera</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $paciente->carrera }}</dd>
+                                </div>
+                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Grupo</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $paciente->grupo }}</dd>
+                                </div>
+                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">Semestre</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $paciente->semestre }}</dd>
+                                </div>
 
                                     </dl>
                                 </div>

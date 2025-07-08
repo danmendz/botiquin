@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -31,7 +31,6 @@ Route::resource('users', UserController::class)->names('users');
 Route::resource('botiquines', BotiquineController::class)->names('botiquines');
 Route::resource('productos', ProductoController::class)->names('productos');
 Route::resource('pacientes', PacienteController::class)->names('pacientes');
-Route::resource('detalles-academicos', DetallesAcademicoController::class)->names('detalles-academicos');
 Route::resource('inventarios', InventarioController::class)->names('inventarios');
 Route::resource('movimientos', MovimientoController::class)->names('movimientos');
 Route::resource('reportes', ReporteController::class)->names('reportes');
