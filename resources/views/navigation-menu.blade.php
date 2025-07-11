@@ -13,6 +13,9 @@
                 <div class="hidden sm:flex space-x-4">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">Dashboard</x-nav-link>
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">Usuarios</x-nav-link>
+                    <x-nav-link href="{{ route('api.pacientes') }}" :active="request()->routeIs('api.pacientes')">Ver pacientes</x-nav-link>
+                    <x-nav-link href="{{ route('api.inventarios') }}" :active="request()->routeIs('api.inventarios')">Inventario de un producto</x-nav-link>
+                    <x-nav-link href="{{ route('api.caducidades') }}" :active="request()->routeIs('api.caducidades')">Productos a caducar</x-nav-link>
 
                     <!-- Botón "Más" con flecha -->
                     <div class="relative">
@@ -158,6 +161,12 @@
                 :active="request()->routeIs('dashboard')">Dashboard</x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('users.index') }}"
                 :active="request()->routeIs('users.*')">Usuarios</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}"
+                :active="request()->routeIs('users.*')">Ver pacientes</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}"
+                :active="request()->routeIs('users.*')">Ver inventario de un producto</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}"
+                :active="request()->routeIs('users.*')">Productos a caducar</x-responsive-nav-link>
 
             <!-- Botón para mostrar más -->
             <button @click="showExtra = !showExtra"

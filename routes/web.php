@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\TipoPacienteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,3 +36,8 @@ Route::resource('inventarios', InventarioController::class)->names('inventarios'
 Route::resource('movimientos', MovimientoController::class)->names('movimientos');
 Route::resource('reportes', ReporteController::class)->names('reportes');
 Route::resource('expedientes-medicos', ExpedientesMedicoController::class)->names('expedientes-medicos');
+
+# Apis
+Route::get('/obtener-inventarios', [ApiController::class, 'getInventarios'])->name('api.inventarios');
+Route::get('/obtener-pacientes', [ApiController::class, 'getPacientes'])->name('api.pacientes');
+Route::get('/caducidades', [ApiController::class, 'getCaducidades'])->name('api.caducidades');
