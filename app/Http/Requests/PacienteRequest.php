@@ -26,6 +26,10 @@ class PacienteRequest extends FormRequest
             'fecha_nacimiento' => 'nullable|date',
             'nombre' => 'required|string',
 			'genero' => 'required',
+            'matricula' => 'nullable|string|max:255',
+            'carrera' => 'nullable|string|max:255',
+            'grupo' => 'nullable|string|max:255',
+            'semestre' => 'nullable|string|max:255',
         ];
     }
 }

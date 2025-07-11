@@ -11,7 +11,7 @@
         <option value="">-- Selecciona un paciente --</option>
         @foreach ($pacientes as $paciente)
             <option value="{{ $paciente->id }}" {{ old('paciente_id', $expedientesMedico->paciente_id) == $paciente->id ? 'selected' : '' }}>
-                {{ $paciente->tipoPaciente?->nombre }} - {{ $paciente->nombre }}
+                {{ $paciente->tipoPaciente?->nombre }} - {{ $paciente->nombre }} - {{ $paciente->matricula }}
             </option>
         @endforeach
     </select>
