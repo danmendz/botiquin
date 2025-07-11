@@ -20,14 +20,14 @@ class ExpedientesMedicoRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-{
-    return [
-        'paciente_id' => 'required|exists:pacientes,id',
-        'usuario_id' => 'required|exists:users,id',
-        'fecha_evento' => 'required|date',
-        'descripcion' => 'required|string',
-        'producto_utilizado' => 'nullable|string',
-    ];
-}
+    {
+        return [
+            'paciente_id' => 'required|exists:pacientes,id',
+            'usuario_id' => 'required|exists:users,id',
+            'fecha_evento' => 'required|date',
+            'descripcion' => 'required|string',
+            'producto_utilizado' => 'nullable|string',
+        ];
+    }
 
 }

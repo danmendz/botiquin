@@ -21,26 +21,23 @@ class UserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-{
-    $rules = [
-        'name' => 'required|string',
-        'email' => 'required|string|email|unique:users,email,' . optional($this->route('user'))->id,
-        'rol' => 'required',
-        // otros campos...
-    ];
+    {
+        $rules = [
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email,' . optional($this->route('user'))->id,
+            'rol' => 'required',
+        ];
 
-    if ($this->isMethod('post')) {
-        // Si es creación, password obligatorio y con reglas
-        $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        if ($this->isMethod('post')) {
+            $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        }
+
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
+        }
+
+        return $rules;
     }
-
-    if ($this->isMethod('put') || $this->isMethod('patch')) {
-        // Si es actualización, password es opcional pero si viene debe ser válido
-        $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
-    }
-
-    return $rules;
-}
 
 
 

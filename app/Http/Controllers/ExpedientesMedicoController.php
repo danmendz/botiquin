@@ -38,11 +38,8 @@ class ExpedientesMedicoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ExpedientesMedicoRequest $request): RedirectResponse
-    {
-        // dd($request->all());  <-- elimina o comenta esta línea
-        
+    {   
         ExpedientesMedico::create($request->validated());
-
 
         return Redirect::route('expedientes-medicos.index')
             ->with('success', 'ExpedientesMedico created successfully.');
